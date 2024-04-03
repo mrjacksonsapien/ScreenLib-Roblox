@@ -1,8 +1,8 @@
--- For more details, check out the API module script or the documentation
--- Always use "ScreenAPI" to access the functions
+-- For more details, check out the lib module script or the documentation
+-- Always use "ScreenLib" to access the functions
 -- To get a better visualization you can run the game and watch the screen change over time
 
-local ScreenAPI = require(script.Parent.API) -- Import the API module with it's current path
+local ScreenLib = require(script.Parent.lib) -- Import the lib module with it's current path
 
 -- Example
 
@@ -11,7 +11,7 @@ local ScreenAPI = require(script.Parent.API) -- Import the API module with it's 
 -- Be careful! Increasing the resolution of the grid might affect the performance of the game since each pixel is 3D model and not a UI object
 -- When you create your screen remember to always keep the object you wanna draw on with a rotation of 0 and motionless on all axis, you can make it move or rotate later.
 
-local myScreen = ScreenAPI.createScreen(10, 10, workspace.Baseplate)
+local myScreen = ScreenLib.createScreen(10, 10, workspace.Baseplate)
 
 -- 2. You can use the setPixel function to select a pixel and change it's state to 0 (off) and 1 (on).
 -- You can also change it's color when it is turned on (optional) else the default color will be white for 1 and black for 0
@@ -23,17 +23,17 @@ local myScreen = ScreenAPI.createScreen(10, 10, workspace.Baseplate)
 -- Here we started by selecting the first pixel of myScreen with the following syntax (_x_y) and setting it's state to 1 (on)
 -- We could also add a rgb value parameter for it's color but in this case we'll start with that
 
-ScreenAPI.setPixel(myScreen._1_1, 1)
+ScreenLib.setPixel(myScreen._1_1, 1)
 
 -- 3. Once we're done drawing we can reset our screen by calling the follow function. This is the easiest way to clear the screen
 
 wait(2) -- Small delay so we can notice our previous modifications
-ScreenAPI.clearScreen(myScreen) -- Here we used myScreen as a parameter of what screen we want to clear
+ScreenLib.clearScreen(myScreen) -- Here we used myScreen as a parameter of what screen we want to clear
 
 wait(2)
 
 -- 4. Now let's try again to set the same pixel again but with a different color
-ScreenAPI.setPixel(myScreen._1_1, 1, Color3.fromRGB(255, 0, 0)) -- We added a new parameter that gets the Color3 class to pick a specific rgb color
+ScreenLib.setPixel(myScreen._1_1, 1, Color3.fromRGB(255, 0, 0)) -- We added a new parameter that gets the Color3 class to pick a specific rgb color
 
 -- The screen only accepts rgb values using Color3.fromRGB()
 
@@ -42,7 +42,7 @@ ScreenAPI.setPixel(myScreen._1_1, 1, Color3.fromRGB(255, 0, 0)) -- We added a ne
 
 wait(2)
 
-ScreenAPI.setPixel(myScreen._1_1, 0)
+ScreenLib.setPixel(myScreen._1_1, 0)
 
 wait(2)
 
@@ -56,7 +56,7 @@ wait(2)
 
 for i = 1, myScreen:GetAttribute("screenWidth") do
 	local pixel = "_"..i.."_1" -- Here is the concatenation where every iteration we select is a new coordinate. Expected output: "_i_1"
-	ScreenAPI.setPixel(myScreen[pixel], 1) -- Here we use the brackets "[]" to select a child by it's name
+	ScreenLib.setPixel(myScreen[pixel], 1) -- Here we use the brackets "[]" to select a child by it's name
 end
 
 wait(2)
@@ -64,7 +64,7 @@ wait(2)
 -- Here we can draw a second row
 for i = 1, myScreen:GetAttribute("screenWidth") do
 	local pixel = "_"..i.."_3" -- Notice we changed the last number which is the row number or the Y value of the coordinates
-	ScreenAPI.setPixel(myScreen[pixel], 1)
+	ScreenLib.setPixel(myScreen[pixel], 1)
 end
 
 wait(2)
@@ -72,32 +72,32 @@ wait(2)
 -- And so it goes on for the rest
 for i = 1, myScreen:GetAttribute("screenWidth") do
 	local pixel = "_"..i.."_5"
-	ScreenAPI.setPixel(myScreen[pixel], 1)
+	ScreenLib.setPixel(myScreen[pixel], 1)
 end
 
 for i = 1, myScreen:GetAttribute("screenWidth") do
 	local pixel = "_"..i.."_7"
-	ScreenAPI.setPixel(myScreen[pixel], 1)
+	ScreenLib.setPixel(myScreen[pixel], 1)
 end
 
 for i = 1, myScreen:GetAttribute("screenWidth") do
 	local pixel = "_"..i.."_9"
-	ScreenAPI.setPixel(myScreen[pixel], 1)
+	ScreenLib.setPixel(myScreen[pixel], 1)
 end
 
 wait(2)
 
-ScreenAPI.clearScreen(myScreen)
+ScreenLib.clearScreen(myScreen)
 
 --[[
 
 Here we are at the end of the tutorial!
 
-This API is still in development and I will later on include some new pre-built functions that could be used. If you are experimented
-enough in programming, I encourage you to create your own functions inside the API, else I would recommend you to stick with the basic
-functions I created and make your own out of it without touching the API module script.
+This lib is still in development and I will later on include some new pre-built functions that could be used. If you are experimented
+enough in programming, I encourage you to create your own functions inside the lib, else I would recommend you to stick with the basic
+functions I created and make your own out of it without touching the lib module script.
 
-Note: This tutorial only teaches the primary functions of the API such as createScreen, setPixel and clearScreen. Other functions
+Note: This tutorial only teaches the primary functions of the lib such as createScreen, setPixel and clearScreen. Other functions
 can be tested. For any information please refer to the documentation.
 
 ]]

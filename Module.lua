@@ -1,29 +1,29 @@
--- API
+-- Library
 
-local API_NAME = "ScreenAPI"
+local LIB_NAME = "ScreenLIB"
 
 local module = {}
 
 local pixels_limit = 10000
 
 if pixels_limit > 10000 then
-	warn("["..API_NAME.."] WARNING: Pixel limit is higher than recommended value.")
+	warn("["..LIB_NAME.."] WARNING: Pixel limit is higher than recommended value.")
 end
 
 function module.createScreen(x, y, obj)
 	if x * y > pixels_limit then
-		warn("["..API_NAME.."] ERROR: Total amount of pixels over limit. Can not continue generation.")
+		warn("["..LIB_NAME.."] ERROR: Total amount of pixels over limit. Can not continue generation.")
 	elseif x < 0 or y < 0 then
-		warn("["..API_NAME.."] ERROR: Can not use negative numbers for screen generation.")
+		warn("["..LIB_NAME.."] ERROR: Can not use negative numbers for screen generation.")
 	else
 		local screen = obj
 		local screenX = screen.Size.X
 		local screenY = screen.Size.Z
 
 		local pixels = Instance.new("Folder", screen)
-		pixels.Name = "ScreenAPI_"..screen.Name.."_screen"
+		pixels.Name = "ScreenLIB_"..screen.Name.."_screen"
 		
-		print("["..API_NAME.."] Screen folder created.")
+		print("["..LIB_NAME.."] Screen folder created.")
 		
 		pixels:SetAttribute("Type", "Screen")
 		pixels:SetAttribute("screenWidth", x)
@@ -61,7 +61,7 @@ function module.createScreen(x, y, obj)
 				weld.Part1 = screen
 			end
 		end
-		print("["..API_NAME.."] Screen ready for drawing.")
+		print("["..LIB_NAME.."] Screen ready for drawing.")
 
 		return pixels
 	end
@@ -190,6 +190,6 @@ function deconcatenatePixel(pixel)
 end
 
 
-print(API_NAME.." has been successfuly imported.")
+print(LIB_NAME.." has been successfuly imported.")
 
 return module

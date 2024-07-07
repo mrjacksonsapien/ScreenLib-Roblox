@@ -7,7 +7,7 @@ By: mrjacksonsapien
 
 	1.1 - Syntax to get a pixel with coordinates: (screenName)._x_y (eg: myScreen._1_1 -- Will select the pixel at coordinate(1,1));
 
-	1.2 - Index of pixels inside the matrix starts at 1 (not 0 unlike most indexes);
+	1.2 - Index of pixels inside the matrix starts at 1 (not 0 like most indexes);
 	
 	1.3 - Calling functions with pixels values that are non existent within the screen's resolution range will generat errors
 	(eg: Calling setPixel and selecting _50_50 in a 25x25 will generate an error. Calling any other functions that will try to draw
